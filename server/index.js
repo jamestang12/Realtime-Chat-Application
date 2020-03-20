@@ -1,3 +1,4 @@
+
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
@@ -12,7 +13,8 @@ const PORT = process.env.PORT || 5000;
 
 io.on('connection', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
-        const { error, user } = addUser({id: socket.id, name, room});
+        console.log('join');
+        const { error, user } = addUser({ id: socket.id, name, room });
         if (error) return callback(error);
 
         socket.emit('message', { user: 'admin', text: `${user.name}, Welcome to the room ${user.room}` });
@@ -29,7 +31,7 @@ io.on('connection', (socket) => {
 
         io.to(user.room).emit('message', { user: user.name, text: message });
         callback();
-    }) 
+    })
 
     socket.on('disconnect', () => {
         console.log('User had left');
@@ -41,22 +43,3 @@ io.on('connection', (socket) => {
 app.use(router);
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
