@@ -1,6 +1,3 @@
-
-#### A web application that allow user send and receive messages in realtime
-#### This Project uses React for the front-end with Node.js and Socket.io web socket library on the back end.
 # Realtime-Chat-Application
 
 This web application allow users to join diferent chat room, send, and receive message in real-time with NodeJS, Express, React on the fromted with a custom UI
